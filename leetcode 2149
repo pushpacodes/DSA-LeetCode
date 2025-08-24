@@ -1,0 +1,38 @@
+class Solution:
+    def rearrangeArray(self, nums: List[int]) -> List[int]:
+       z=len(nums)
+       p=[]
+       n=[]
+       for i in nums:
+        if i>=0:
+            p.append(i)
+        elif i<0:
+            n.append(i)
+        for i in range(len(p)):
+            nums[2 * i] = p[i]
+        for i in range(len(n)):
+            nums[2 * i + 1] = n[i]
+        return nums
+#######brute force method
+nums=[-1,2,5,-3]
+z=len(nums)
+p=[]
+n=[]
+for i in nums:
+    if i>=0:
+        p.append(i)
+    elif i<0:
+        n.append(i)
+print(p,n)
+nums=[0]*z
+i=0
+j=1
+q=0
+while i<z and j<z:
+   nums[i]=p[q]
+   nums[j]=n[q]
+   i+=2
+   j+=2
+   q+=1
+for i in nums:
+    print(i,sep=',',end=' ')
